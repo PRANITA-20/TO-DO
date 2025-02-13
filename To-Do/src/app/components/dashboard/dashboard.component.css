@@ -1,0 +1,22 @@
+.dashboard-wrapper{
+    display: flex;
+    justify-content: space-between;
+    padding:24px;
+    height:40px;
+    background-color: #f4f4f4;
+    align-items: center;  
+}
+.dashboard-headline{
+    font-size: large;
+}
+.dashboard-user-info{
+    margin-right: 10px;
+}
+@media all and (max-width: 480px) {
+    .dashboard-user-info{
+       display: none;
+    }
+    .dashboard-headline{
+        font-size: medium;
+    }
+  }
