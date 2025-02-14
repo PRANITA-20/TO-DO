@@ -1,1 +1,50 @@
-<p>to-do works!</p>
+<div class="to-do-container">
+    <div class="to-do-input">
+        <mat-form-field appearance="outline">
+            <input matInput placeholder="Enter your task" [(ngModel)]="newTaskItem">
+          </mat-form-field>
+          <button class="to-do-add-button" mat-raised-button (click)="addNewTask()" color="primary">Add Task</button>
+    </div>
+    <div  *ngIf="dataSource.data.length>0" class="table-container">
+    
+        <table  mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+             <!-- Status Column -->
+            <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef> Mark as Complete </th>
+              <td mat-cell *matCellDef="let element">  <mat-checkbox 
+                [checked]="element.completed"
+                (change)="toggleTaskCompletion(element)"  color="warn">
+               
+              </mat-checkbox> </td>
+            </ng-container>
+          
+            <!-- Task Column -->
+            <ng-container matColumnDef="task">
+              <th mat-header-cell *matHeaderCellDef> Task </th>
+              <td mat-cell *matCellDef="let element"> {{element.task}} </td>
+            </ng-container>
+              <!-- Status Column -->
+              <ng-container matColumnDef="complete">
+                <th mat-header-cell *matHeaderCellDef> Status </th>
+                <td mat-cell *matCellDef="let element"> {{element.completed ? 'Completed': 'Pending'}} </td>
+              </ng-container>
+            <!-- Delete button Column -->
+            <ng-container matColumnDef="delete">
+              <th mat-header-cell *matHeaderCellDef> Action</th>
+              <td mat-cell *matCellDef="let element">    <button  mat-raised-button (click)="deleteTask(element.id)" color="warn">Delete</button> </td>
+            </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        
+          <mat-paginator 
+          *ngIf="dataSource.data.length > 4"
+          [pageSize]="4"
+          [pageSizeOptions]="[8, 16, 32]"
+          showFirstLastButtons>
+        </mat-paginator>
+    </div>
+  
+  
+</div>
