@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit{
   onLogin(): void {
  
     if (this.username && this.password) {
-      this.authService.getUsers().subscribe(users=>{this.authenticatedUserList= users;
+      this.authService.getUsers().subscribe({next:users=>{this.authenticatedUserList= users;
        console.log(this.authenticatedUserList,"aut")
        const user = this.authenticatedUserList.find(u => u.username === this.username && u.password === this.password);
         if(user){
@@ -32,8 +32,11 @@ export class LoginComponent implements OnInit{
         }else{
           this.errorMessage = 'Invalid credentials';
         }
-      })
+      },error:()=>{this.errorMessage='An error occurred. Please try again.'}})
     
+    }else if(!this.username || !this.password){
+      this.errorMessage='Username and password are required.'
+      return;
     }
   }
 }

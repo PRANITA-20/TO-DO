@@ -5,8 +5,18 @@
           </mat-form-field>
           <button class="to-do-add-button" mat-raised-button (click)="addNewTask()" color="primary">Add Task</button>
     </div>
+   
     <div  *ngIf="dataSource.data.length>0" class="table-container">
-    
+        <mat-form-field>
+            <mat-label>Filter Tasks</mat-label>
+            <mat-select [(value)]="selectedValue" (selectionChange)="updateData($event.value)">
+                <mat-option value="all">All</mat-option>
+                <mat-option value="pending">Pending</mat-option>
+                <mat-option value="completed">Completed</mat-option>
+              </mat-select>
+          </mat-form-field>
+        <mat-card>
+    <div class="table-responsive">
         <table  mat-table [dataSource]="dataSource" class="mat-elevation-z8">
              <!-- Status Column -->
             <ng-container matColumnDef="status">
@@ -37,7 +47,8 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           </table>
-        
+        </div>
+    </mat-card>
           <mat-paginator 
           *ngIf="dataSource.data.length > 4"
           [pageSize]="4"

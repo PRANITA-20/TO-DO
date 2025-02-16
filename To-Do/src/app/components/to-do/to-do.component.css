@@ -12,17 +12,65 @@
     height: 56px;
     margin-left: 26px;
 }
-
-  .table-container{
-    max-width: 1220px;
-    width: 100%;
-    margin: auto;
-    padding: 0 24px;
+.table-container{
+    max-width: 1320px;
+    padding: 24px;
+    margin:auto;
 }
-  
-  .table {
+/* Wrapper to make table scrollable on small screens */
+.table-responsive {
+    overflow-x: auto;
     width: 100%;
   }
+  
+  /* Ensure table uses full width */
+  table {
+    width: 100%;
+  }
+  
+  /* Adjust table header font size for small screens */
+  th, td {
+    white-space: nowrap; /* Prevents text wrapping */
+    padding: 8px;
+    text-align: left;
+  }
+  
+  /* Make buttons and checkboxes scale properly */
+  button {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    th, td {
+      font-size: 14px; /* Reduce text size */
+      padding: 6px; /* Reduce padding */
+    }
+    
+    button {
+      font-size: 12px;
+      padding: 4px 8px;
+    }
+  }
+  
+  /* Extra small devices */
+  @media (max-width: 480px) {
+    th, td {
+      font-size: 12px;
+      padding: 4px; /* Further reduce padding */
+    }
+  
+    button {
+      font-size: 10px;
+      padding: 3px 6px;
+    }
+  
+    .mat-paginator {
+      font-size: 12px; /* Adjust paginator font size */
+    }
+  }
+  
 .mat-mdc-paginator{
     margin-top:20px;
 }
