@@ -3,10 +3,16 @@
     margin: auto;
     padding: 16px;
 }
+.to-do-label{
+  font-size: 25px;
+    font-weight: 500;
+    text-align: center;
+    padding: 64px 64px 24px 64px;
+}
 .to-do-input{
     display: flex;
         justify-content: center;
-    padding: 64px;
+        padding: 0 64px 64px;
 }
 .to-do-add-button{
     height: 56px;
@@ -23,19 +29,16 @@
     width: 100%;
   }
   
-  /* Ensure table uses full width */
   table {
     width: 100%;
   }
-  
-  /* Adjust table header font size for small screens */
+
   th, td {
-    white-space: nowrap; /* Prevents text wrapping */
+    white-space: nowrap; 
     padding: 8px;
     text-align: left;
   }
   
-  /* Make buttons and checkboxes scale properly */
   button {
     font-size: 14px;
     padding: 6px 10px;
@@ -44,8 +47,8 @@
   /* Responsive Adjustments */
   @media (max-width: 768px) {
     th, td {
-      font-size: 14px; /* Reduce text size */
-      padding: 6px; /* Reduce padding */
+      font-size: 14px; 
+      padding: 6px; 
     }
     
     button {
@@ -58,7 +61,7 @@
   @media (max-width: 480px) {
     th, td {
       font-size: 12px;
-      padding: 4px; /* Further reduce padding */
+      padding: 4px; 
     }
   
     button {
@@ -67,10 +70,13 @@
     }
   
     .mat-paginator {
-      font-size: 12px; /* Adjust paginator font size */
+      font-size: 12px;
     }
     .mat-mdc-select{
 font-size:12px !important;
+    }
+    .to-do-label{
+      font-size: 18px;
     }
 
   }

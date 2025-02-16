@@ -1,5 +1,7 @@
 <div class="to-do-container">
+  <div class="to-do-label">To Do : Let's get things done!</div>
     <div class="to-do-input">
+     
         <mat-form-field appearance="outline">
             <input matInput placeholder="Enter your task"  (keydown.enter)="addNewTask()" [(ngModel)]="newTaskItem">
           </mat-form-field>
@@ -7,6 +9,7 @@
     </div>
    
     <div  *ngIf="dataSource.data.length>0" class="table-container">
+      <div class="to-do-label">Your To-Do List..</div>
         <mat-form-field>
             <mat-label>Filter Tasks</mat-label>
             <mat-select [(value)]="selectedValue" (selectionChange)="updateData($event.value)">
