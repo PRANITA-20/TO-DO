@@ -69,6 +69,10 @@
     .mat-paginator {
       font-size: 12px; /* Adjust paginator font size */
     }
+    .mat-mdc-select{
+font-size:12px !important;
+    }
+
   }
   
 .mat-mdc-paginator{

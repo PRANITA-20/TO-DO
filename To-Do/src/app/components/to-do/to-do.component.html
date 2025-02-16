@@ -1,7 +1,7 @@
 <div class="to-do-container">
     <div class="to-do-input">
         <mat-form-field appearance="outline">
-            <input matInput placeholder="Enter your task" [(ngModel)]="newTaskItem">
+            <input matInput placeholder="Enter your task"  (keydown.enter)="addNewTask()" [(ngModel)]="newTaskItem">
           </mat-form-field>
           <button class="to-do-add-button" mat-raised-button (click)="addNewTask()" color="primary">Add Task</button>
     </div>
