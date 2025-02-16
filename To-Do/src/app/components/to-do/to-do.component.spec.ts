@@ -33,75 +33,68 @@ describe('ToDoComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-
-  it('should create the component', () => {
+  //test cases
+  it('should create the To-do component', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should initialize with an empty task list', () => {
-    expect(component.todoItemList.length).toBe(0);
-  });
-
-  it('should add a new task', () => {
-    component.newTaskItem = 'Test Task';
+  it('should add a new task on addNewTask getting triggered', () => {
+    component.newTaskItem = 'New Task 1';
     component.addNewTask();
     expect(component.todoItemList.length).toBe(1);
-    expect(component.todoItemList[0].task).toBe('Test Task');
+    expect(component.todoItemList[0].task).toBe('New Task 1');
     expect(component.todoItemList[0].completed).toBeFalse();
   });
 
-  it('should not add an empty task', () => {
+  it('should not add an empty task i.e if value of newTaskItem is " " ', () => {
     component.newTaskItem = '   ';
     component.addNewTask();
     expect(component.todoItemList.length).toBe(0);
   });
-
-  it('should delete a task', () => {
-    component.newTaskItem = 'Task to Delete';
+  
+  it('should toggle task completion status on selecting the checkbox', () => {
+    component.newTaskItem = 'New Task to Toggle';
     component.addNewTask();
-    const taskId = component.todoItemList[0].id;
-    
-    component.deleteTask(taskId);
-    
+    const newTask = component.todoItemList[0];
+
+    component.toggleTaskCompletion(newTask);
+    expect(newTask.completed).toBeTrue();
+
+    component.toggleTaskCompletion(newTask);
+    expect(newTask.completed).toBeFalse();
+  });
+
+  it('should delete a task on calling deleteTask method', () => {
+    component.newTaskItem = 'Delete this Task';
+    component.addNewTask();
+    const id = component.todoItemList[0].id;
+    component.deleteTask(id); 
     expect(component.todoItemList.length).toBe(0);
   });
-
-  it('should toggle task completion status', () => {
-    component.newTaskItem = 'Task to Toggle';
-    component.addNewTask();
-    const task = component.todoItemList[0];
-
-    component.toggleTaskCompletion(task);
-    expect(task.completed).toBeTrue();
-
-    component.toggleTaskCompletion(task);
-    expect(task.completed).toBeFalse();
-  });
-
-  it('should filter completed tasks', () => {
+  it('should filter pending tasks on selecting pending from the dropdown', () => {
     component.todoItemList = [
-      { id: 1, task: 'Completed Task', completed: true },
-      { id: 2, task: 'Pending Task', completed: false },
-    ];
-    component.updateData('completed');
-    expect(component.dataSource.data.length).toBe(1);
-    expect(component.dataSource.data[0].task).toBe('Completed Task');
-  });
-
-  it('should filter pending tasks', () => {
-    component.todoItemList = [
-      { id: 1, task: 'Completed Task', completed: true },
-      { id: 2, task: 'Pending Task', completed: false },
+      { id: 1, task: 'Completed', completed: true },
+      { id: 2, task: 'Pending', completed: false },
     ];
     component.updateData('pending');
     expect(component.dataSource.data.length).toBe(1);
-    expect(component.dataSource.data[0].task).toBe('Pending Task');
+    expect(component.dataSource.data[0].task).toBe('Pending');
   });
 
-  it('should show all tasks when "all" filter is selected', () => {
+  it('should filter the completed tasks on selecting completed from the dropdown', () => {
     component.todoItemList = [
-      { id: 1, task: 'Completed Task', completed: true },
-      { id: 2, task: 'Pending Task', completed: false },
+      { id: 1, task: 'Completed', completed: true },
+      { id: 2, task: 'Pending', completed: false },
+    ];
+    component.updateData('completed');
+    expect(component.dataSource.data.length).toBe(1);
+    expect(component.dataSource.data[0].task).toBe('Completed');
+  });
+
+  it('should show all tasks when all is selected from the dropdown', () => {
+    component.todoItemList = [
+      { id: 1, task: 'Pending', completed: false },
+      { id: 2, task: 'Completed', completed: true }
     ];
     component.updateData('all');
     expect(component.dataSource.data.length).toBe(2);

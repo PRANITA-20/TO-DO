@@ -20,7 +20,7 @@ describe('DashboardComponent', () => {
   });
 
   beforeEach(() => {
-    localStorage.setItem('user', JSON.stringify('testuser'));
+    localStorage.setItem('user', JSON.stringify('user1'));
     fixture = TestBed.createComponent(DashboardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -30,23 +30,21 @@ describe('DashboardComponent', () => {
     localStorage.removeItem('user');
   });
 
-  it('should create the component', () => {
+  it('should create the Dashboard component', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should retrieve logged-in user from localStorage', () => {
-    expect(component.loggedInUser).toBe('testuser');
+  it('should get logged user info', () => {
+    expect(component.loggedInUser).toBe('user1');
   });
 
-  it('should call logout method on button click', () => {
-    const logoutButton = fixture.debugElement.query(By.css('button'));
-    logoutButton.triggerEventHandler('click', null);
-
+  it('should show the logged in user in uppercase in dashboard', () => {
+    const user = fixture.debugElement.query(By.css('.dashboard-user-info')).nativeElement;
+    expect(user.textContent).toContain('USER1');
+  });
+  it('should trigger logout() on logout button click', () => {
+    const logoutBtn = fixture.debugElement.query(By.css('button'));
+    logoutBtn.triggerEventHandler('click', null);
     expect(authServiceSpy.logout).toHaveBeenCalled();
-  });
-
-  it('should display the username in uppercase', () => {
-    const userInfoElement = fixture.debugElement.query(By.css('.dashboard-user-info')).nativeElement;
-    expect(userInfoElement.textContent).toContain('TESTUSER');
   });
 });
