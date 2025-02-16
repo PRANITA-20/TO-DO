@@ -18,4 +18,19 @@ Server: json-server
 Git for version control
 
 INSTRUCTIONS ON HOW TO RUN THE APPLICATION LOCALLY:
-1. Clone the project from Git 
+1. Clone the project from Git: https://github.com/PRANITA-20/TO-DO.git
+   Steps to clone: run command 'git clone https://github.com/PRANITA-20/TO-DO.git' in the command prompt in a folder
+2. Open the project in VSCode and run the command 'npm install' to install node modules and relevant packages.
+3. Steps to install and start a local json server: In a different VSCode terminal run 'npm install -g json-server' to install the json server.
+                                                    Run command 'json-server --watch db.json --port 3000' to start the server
+4. The local server will start and http://localhost:3000/users is the endpoint.
+5. Run the front end application in another VSCode terminal: 'ng serve'. This will successfully start the application. Open http://localhost:4200/login in the browser.
+6. For testing: Run command 'ng test'. If you want to test login component, run command: ng test --include=src/app/components/login/login.component.spec.ts.
+                                       If you want to test dashboard component, run command: ng test --include=src/app/components/dashboard/dashboard.component.spec.ts
+                                       If you want to test to-do component, run command: ng test --include=src/app/components/to-do/to-do.component.spec.ts
+                                       If you want to test the authentication service, run command: ng test --include=src/app/services/authentication.service.spec.ts
+
+
+
+
+   -----------------------------------------------------------------------The end -----------------------------------------------------------------------
