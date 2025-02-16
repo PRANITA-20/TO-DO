@@ -25,7 +25,13 @@ INSTRUCTIONS ON HOW TO RUN THE APPLICATION LOCALLY:
                                                     Run command 'json-server --watch db.json --port 3000' to start the server
 4. The local server will start and http://localhost:3000/users is the endpoint.
 5. Run the front end application in another VSCode terminal: 'ng serve'. This will successfully start the application. Open http://localhost:4200/login in the browser.
-6. For testing: Run command 'ng test'. If you want to test login component, run command: ng test --include=src/app/components/login/login.component.spec.ts.
+6. In order to login use any of these username and password combination:  "users": [
+        { "id": 1, "username": "user1", "password": "123456" },
+        { "id": 2, "username": "user2", "password": "78910" },
+        { "id": 3, "username": "user3", "password": "111234" },
+        { "id": 4, "username": "user4", "password": "15161718" }
+    ]
+7. For testing: Run command 'ng test'. If you want to test login component, run command: ng test --include=src/app/components/login/login.component.spec.ts.
                                        If you want to test dashboard component, run command: ng test --include=src/app/components/dashboard/dashboard.component.spec.ts
                                        If you want to test to-do component, run command: ng test --include=src/app/components/to-do/to-do.component.spec.ts
                                        If you want to test the authentication service, run command: ng test --include=src/app/services/authentication.service.spec.ts
